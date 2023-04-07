@@ -2,9 +2,13 @@
 #macro SERVER_MAX_PLAYERS 2
 #macro SERVER_SOCKET_TYPE network_socket_tcp
 
-global.server_info = {
-	current_players : 0,
-	port : -1,
-	socket_id : -1,
-	list_socket_players : ds_list_create(),
-}
+global.server_info_port = -1;
+global.server_info_server_socket = -1;
+
+global.connected_sockets_amount = 0;
+
+global.connected_sockets = ds_list_create();
+global.connected_sockets_in_game = ds_list_create();
+global.connected_sockets_waiting_game = ds_list_create();
+
+global.connected_socket_to_player = ds_map_create();

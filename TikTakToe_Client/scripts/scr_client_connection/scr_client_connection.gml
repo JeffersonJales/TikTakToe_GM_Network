@@ -55,6 +55,8 @@ function client_socket_class() constructor {
 			set_server_socket(net_async_get(NET_ASYNC_SOCKET));
 			SatelliteBroadcast(MESSAGE_NET_CLIENT_CONNECT_ON_SERVER, server_socket_id);
 		}
+		else 
+			SatelliteBroadcast(MESSAGE_NET_CLIENT_CANT_CONNECT)
 	}
 	
 	/// When this client is disconnected from the server

@@ -24,7 +24,6 @@ menu_fsm.add("wait", {
 		}
 	}
 })
-
 menu_fsm.add("wait_player", {
 	enter : function(){
 		text_display = "CONECTADO. ESPERANDO OUTRO JOGADOR.";
@@ -51,4 +50,5 @@ satellite = Satellite();
 satellite.
 	add(MESSAGE_NET_CLIENT_CONNECT_ON_SERVER, function(){ menu_fsm.on_login_server() }).
 	add(MESSAGE_NET_CLIENT_LOST_SERVER, function(){ menu_fsm.on_lost_connection() }). 
+	add(MESSAGE_NET_CLIENT_CANT_CONNECT, function(){ menu_fsm.on_lost_connection() }). 
 	add(MESSAGE_CLIENT_START_GAME, function(){ menu_fsm.change("player_found")})

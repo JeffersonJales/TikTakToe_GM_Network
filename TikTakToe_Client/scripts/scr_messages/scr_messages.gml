@@ -1,3 +1,4 @@
 #macro MESSAGE_NET_CLIENT_CONNECT_ON_SERVER "__client_login_server"
 #macro MESSAGE_NET_CLIENT_LOST_SERVER "__client_logout_server"
+#macro MESSAGE_NET_CLIENT_CANT_CONNECT "__client_cant_connect_to_server"
 #macro MESSAGE_CLIENT_START_GAME "__client_start_game"

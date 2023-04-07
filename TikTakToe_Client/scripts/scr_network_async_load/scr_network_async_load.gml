@@ -22,3 +22,7 @@ function net_async_get(str){
 function net_async_exists(str){
 	return async_load[? str] != undefined;
 }
+
+function network_send_packet_simple(socket, buffer){
+	return network_send_packet(socket, buffer, buffer_get_size(buffer))
+}

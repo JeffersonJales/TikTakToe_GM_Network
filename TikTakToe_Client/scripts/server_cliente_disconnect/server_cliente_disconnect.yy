@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_string_concat",
+  "name": "server_cliente_disconnect",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Scripts.yy",
+    "name": "Server",
+    "path": "folders/Scripts/Network/Server.yy",
   },
 }

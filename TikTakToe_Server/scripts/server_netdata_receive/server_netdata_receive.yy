@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_server_info",
+  "name": "server_netdata_receive",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
