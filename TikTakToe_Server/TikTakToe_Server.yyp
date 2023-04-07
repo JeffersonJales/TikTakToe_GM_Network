@@ -3,6 +3,9 @@
   "resourceVersion": "1.6",
   "name": "TikTakToe_Server",
   "resources": [
+    {"id":{"name":"__snowstate_config","path":"scripts/__snowstate_config/__snowstate_config.yy",},"order":0,},
+    {"id":{"name":"SnowState","path":"scripts/SnowState/SnowState.yy",},"order":1,},
+    {"id":{"name":"scr_client_server_data","path":"scripts/scr_client_server_data/scr_client_server_data.yy",},"order":3,},
     {"id":{"name":"scr_network_async_load","path":"scripts/scr_network_async_load/scr_network_async_load.yy",},"order":1,},
     {"id":{"name":"scr_server_info","path":"scripts/scr_server_info/scr_server_info.yy",},"order":0,},
     {"id":{"name":"obj_server","path":"objects/obj_server/obj_server.yy",},"order":0,},
@@ -33,6 +36,8 @@
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Scripts","folderPath":"folders/Scripts.yy","order":0,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Objects.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"SnowState","folderPath":"folders/Libs/SnowState.yy","order":0,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Libs","folderPath":"folders/Libs.yy","order":6,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},

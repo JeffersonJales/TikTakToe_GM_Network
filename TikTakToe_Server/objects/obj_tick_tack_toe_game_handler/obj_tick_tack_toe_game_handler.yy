@@ -4,7 +4,7 @@
   "name": "obj_tick_tack_toe_game_handler",
   "spriteId": null,
   "solid": false,
-  "visible": true,
+  "visible": false,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,

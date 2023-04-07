@@ -1,6 +1,6 @@
 /// @desc DISABLE DRAW + CREATE SERVER
 
-draw_enable_drawevent(false);	
+//draw_enable_drawevent(false);	
 
 /// Server is Alive checker
 text = " I'm still alive and I have ";
@@ -11,11 +11,11 @@ last_time = 0;
 
 /// Server Create
 var port = 6510;
-var server = network_create_server(SERVER_SOCKET_TYPE, port, 32);
+var server = network_create_server(SERVER_SOCKET_TYPE, port, SERVER_MAX_PLAYERS);
 while (server < 0 && port < 65535)
 {
     port++
-    server = network_create_server(SERVER_SOCKET_TYPE, port, 32);
+    server = network_create_server(SERVER_SOCKET_TYPE, port, SERVER_MAX_PLAYERS);
 }
 
 global.server_info.port = port;

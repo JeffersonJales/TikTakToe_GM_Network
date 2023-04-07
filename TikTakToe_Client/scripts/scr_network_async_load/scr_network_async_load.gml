@@ -22,12 +22,3 @@ function net_async_get(str){
 function net_async_exists(str){
 	return async_load[? str] != undefined;
 }
-
-function net_async_is(type_id){
-	return type_id == async_load[? NET_ASYNC_TYPE];
-}
-
-function net_async_is_me(type, socket_id){
-	return type == async_load[? NET_ASYNC_TYPE] && socket_id == async_load[? NET_ASYNC_ID]
-}
-

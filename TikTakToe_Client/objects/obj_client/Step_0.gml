@@ -1,3 +1,6 @@
-/// @desc TRY CONNECT
-if(keyboard_check_pressed(vk_space)) connect_with_server();
-if(keyboard_check_pressed(vk_f1)) network_change_port();
+/// @desc 
+if(client_socket_is_connected()){
+	if((last_time + interval) < current_time){
+		last_time = current_time
+	}
+}
