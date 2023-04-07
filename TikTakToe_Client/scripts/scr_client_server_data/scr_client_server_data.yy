@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Network",
-    "path": "folders/Scripts/Network.yy",
+    "name": "Sync",
+    "path": "folders/Scripts/Network/Sync.yy",
   },
 }

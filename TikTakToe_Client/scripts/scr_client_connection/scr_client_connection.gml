@@ -4,8 +4,6 @@ function client_socket_class() constructor {
 	trying_connect = false;
 	server_socket_id = -1;
 	
-	
-	
 	/// Start a connection with the server
 	static try_connect = function(){
 		if(server_socket_id >= 0 || trying_connect) return;
@@ -82,6 +80,7 @@ function client_socket_class() constructor {
 			network_destroy(server_socket_id);
 	}
 }
+
 global.client_data = new client_socket_class();
 function client_socket_network(){ global.client_data.async_network(); }
 function client_socket_is_connected(){ return global.client_data.is_connected(); } 
