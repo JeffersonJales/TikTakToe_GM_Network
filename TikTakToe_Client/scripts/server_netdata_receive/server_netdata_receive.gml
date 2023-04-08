@@ -1,1 +1,0 @@
-function server_netdata_receive(){}

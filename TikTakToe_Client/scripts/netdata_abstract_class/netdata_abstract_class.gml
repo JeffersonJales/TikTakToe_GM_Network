@@ -1,6 +1,6 @@
 /// 
 function netdata_abstract_class() constructor {
-	class_id = CLIENT_DATA.UNKNOW;
+	class_id = NET_DATA.UNKNOW;
 	
 	/// The REAL constructor for the class 
 	static __init__ = function(){}
@@ -24,5 +24,10 @@ function netdata_abstract_class() constructor {
 	static __read_buffer_id = function(buffer){
 		buffer_seek(buffer, buffer_seek_start, 0);
 		class_id = buffer_read(buffer, NETWORK_DATA_TYPE_VAR_TYPE);
+	}
+	
+	static send_buffer = function(socket, buffer = create_network_buffer(), destroy_buffer = true){
+		network_send_packet_simple(socket, buffer);
+		if(destroy_buffer) buffer_delete(buffer);
 	}
 }

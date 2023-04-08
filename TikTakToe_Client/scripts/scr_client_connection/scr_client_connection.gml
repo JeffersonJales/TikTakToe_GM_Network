@@ -7,10 +7,10 @@ function client_socket_class() constructor {
 	/// Start a connection with the server
 	static try_connect = function(){
 		if(server_socket_id >= 0 || trying_connect) return;
-		print("Connect With server. IP: ", SERVER_IP,  "Port",  global.server_info.port);
+		print("Connect With server. IP: ", global.server_ip,  "Port",  global.server_info_port);
 
 		trying_connect = true;
-		network_connect_async(socket_id, SERVER_IP, global.server_info.port);
+		network_connect_async(socket_id, global.server_ip, global.server_info_port);
 	}
 	
 	#region Getters / Setters
@@ -53,7 +53,7 @@ function client_socket_class() constructor {
 		var _sucess = net_async_get(NET_ASYNC_SUCESS) ?? true;
 		if(_sucess){
 			set_server_socket(net_async_get(NET_ASYNC_SOCKET));
-			SatelliteBroadcast(MESSAGE_NET_CLIENT_CONNECT_ON_SERVER, server_socket_id);
+			SatelliteBroadcast(MESSAGE_NET_CLIENT_CONNECT, server_socket_id);
 		}
 		else 
 			SatelliteBroadcast(MESSAGE_NET_CLIENT_CANT_CONNECT)

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "server_cliente_disconnect",
+  "name": "server_async_network_event",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

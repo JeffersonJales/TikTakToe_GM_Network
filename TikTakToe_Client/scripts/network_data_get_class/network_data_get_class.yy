@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_network_data_get_type",
+  "name": "network_data_get_class",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

@@ -1,5 +1,5 @@
-/// @desc 
-		room_goto(RoomGame);
+/// @desc Goto Game
+room_goto(RoomGame);
 
 
 
