@@ -22,7 +22,7 @@ function server_network_connect(){
 		var _game = new netdata_tictactoe_data(_first_player, _second_player);
 		_game.matchmaking_done();
 		
-		
+		global.tictactoe_game[? _game.ttt_game_id] = _game;
 	}
 	else{
 		ds_list_add(global.connected_sockets_waiting_game, _player);
@@ -38,16 +38,3 @@ function client_player_id(socket_id) constructor{
 	in_game = false;
 	on_game_id = undefined;
 }
-
-function game_connection(player1, player2) constructor{
-	client_x = choose(player1, player2);
-	client_o = client_x == player1 ? player2 : player1;
-	
-	static game_start = function(){
-		var _x = new netdata_game_start(true);
-		var _o = new netdata_game_start(false);
-		_x.send_buffer(client_x.socket);
-		_o.send_buffer(client_o.socket);
-	}
-}
-

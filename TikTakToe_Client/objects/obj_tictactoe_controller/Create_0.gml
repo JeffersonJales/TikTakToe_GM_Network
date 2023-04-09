@@ -38,6 +38,10 @@ text_state = inst_game_text_state;
 
 /// SATELLITE SETUP
 satellite = Satellite();
+satellite.add(MESSAGE_NET_CLIENT_LOST_CONNECTION, function(){
+	game_fsm.change("wait");
+	room_goto(RoomInit);
+});
 
 /// FSM SETUP
 game_fsm = new SnowState("wait");

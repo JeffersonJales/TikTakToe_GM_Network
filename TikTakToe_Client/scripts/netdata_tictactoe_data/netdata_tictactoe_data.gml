@@ -15,12 +15,10 @@ function netdata_tictactoe_data(player1_socket, player2_socket) : netdata_abstra
 	
 	netdata_add_var("board_grid", NETDATA_VAR_TYPE_GRID, ds_grid_create(3, 3));
 	
-	
 	static matchmaking_done = function(){
 		var _matchfound = new netdata_game_start();
 		_matchfound.send_buffer_broadcast([socket_player_1, socket_player_2],, true);
 		delete _matchfound;
 	}
-	
 	
 }
