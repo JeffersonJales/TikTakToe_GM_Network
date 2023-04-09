@@ -24,5 +24,7 @@ function net_async_exists(str){
 }
 
 function network_send_packet_simple(socket, buffer){
-	return network_send_packet(socket, buffer, buffer_get_size(buffer))
+	var _size = buffer_get_size(buffer);
+	print("Buffer packet _size", _size, " bytes");
+	return network_send_packet(socket, buffer, _size);
 }

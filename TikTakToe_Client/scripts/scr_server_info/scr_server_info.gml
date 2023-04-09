@@ -13,4 +13,4 @@ global.connected_sockets = ds_list_create();
 global.connected_sockets_in_game = ds_list_create();
 global.connected_sockets_waiting_game = ds_list_create();
 
-global.connected_socket_to_player = ds_map_create();
+global.connected_socket_to_player_id = ds_map_create();

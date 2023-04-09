@@ -62,9 +62,18 @@ function netdata_abstract_class() constructor {
 		}
 	}
 	
-	/// 
+	/// @func send_buffer
 	static send_buffer = function(socket, buffer = create_network_buffer(), destroy_buffer = true){
 		network_send_packet_simple(socket, buffer);
+		if(destroy_buffer) buffer_delete(buffer);
+	}
+	
+	/// @func send_buffer_broadcast
+	static send_buffer_broadcast = function(arr_socket, buffer = create_network_buffer(), destroy_buffer = true){
+		for(var i = 0; i < array_length(arr_socket); i++){
+			network_send_packet_simple(arr_socket[i], buffer);
+		}
+		
 		if(destroy_buffer) buffer_delete(buffer);
 	}
 }
@@ -93,15 +102,15 @@ function __network_get_buffer_type(var_type){
 
 function __netdata_get_read_callback(var_type){
 		switch(var_type){
-			case NETDATA_VAR_TYPE_GRID: return __netdata_write_grid;
-			default: return __netdata_write_default;
+			case NETDATA_VAR_TYPE_GRID: return __netdata_read_grid;
+			default: return __netdata_read_default;
 		}
 	}
 
 function __netdata_get_write_callback(var_type){
 		switch(var_type){
 			case NETDATA_VAR_TYPE_GRID: return __netdata_write_grid;
-			default: return __netdata_read_grid;
+			default: return __netdata_write_default;
 		}
 	}
 
