@@ -47,7 +47,7 @@ menu_fsm.add("wait_player", {
 })
 menu_fsm.add("wait_connect", {
 	enter : function(){
-		client_socket_connect();
+		client_try_coonect_server();
 		text_display.set_text("Conectando...");
 	}, 
 	on_login_server : function(){
@@ -64,7 +64,7 @@ menu_fsm.add("server_create", {
 		//var _ip = network_resolve("127.0.0.1");
 		//global.server_ip = _ip;
 		instance_create_depth(0,0,0, obj_server);
-		client_socket_connect();
+		client_try_coonect_server();
 		text_display.set_text("Criando servidor");
 	},
 	on_login_server : function(){
@@ -83,7 +83,7 @@ menu_fsm.add("server_wait_player", {
 
 satellite = Satellite();
 satellite.
-	add(MESSAGE_NET_CLIENT_CONNECT, function(){ menu_fsm.on_login_server() }).
-	add(MESSAGE_NET_CLIENT_LOST_CONNECTION, function(){ menu_fsm.on_lost_connection() }). 
-	add(MESSAGE_NET_CLIENT_CANT_CONNECT, function(){ menu_fsm.on_lost_connection() }). 
-	add(MESSAGE_NET_CLIENT_START_GAME, function(){ menu_fsm.on_player_found() })
+	add(NET_DATA.CONNECT, function(){ menu_fsm.on_login_server() }).
+	add(NET_DATA.DISCONECT, function(){ menu_fsm.on_lost_connection() }). 
+	add(NET_DATA.CANT_CONNECT, function(){ menu_fsm.on_lost_connection() }). 
+	add(NET_DATA.GAME_FOUND, function(){ menu_fsm.on_player_found() })

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_client_connection",
+  "name": "client_network_disconnect",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

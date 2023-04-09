@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_network_async_load",
+  "name": "scr_client_info",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Utils",
-    "path": "folders/Scripts/Network/Utils.yy",
+    "name": "Client",
+    "path": "folders/Scripts/Network/Client.yy",
   },
 }

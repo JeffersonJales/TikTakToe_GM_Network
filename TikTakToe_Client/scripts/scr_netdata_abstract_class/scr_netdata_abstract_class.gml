@@ -1,4 +1,5 @@
 /// 
+
 function netdata_abstract_class() constructor {
 	
 	class_id = NET_DATA.UNKNOW;
@@ -6,59 +7,33 @@ function netdata_abstract_class() constructor {
 	netdata_var_type_read = {};
 	netdata_var_type_write = {};
 	netdata_var_type_destructor = {}
-
-	/// @func netdata_add_var
-	static netdata_add_var = function(var_str, type, value){
-		variable_struct_set(self, var_str, value);
-		variable_struct_set(netdata_var_type, var_str, __network_get_buffer_type(type));
-		variable_struct_set(netdata_var_type_read, var_str, __netdata_get_read_callback(type));
-		variable_struct_set(netdata_var_type_write, var_str, __netdata_get_write_callback(type));
-		netdata_set_type_destructor(type, var_str);
-	}
+	netdata_var_type_order = [];
 	
-	static netdata_set_type_destructor = function(var_type, var_key){
-		switch(var_type){
-			case NETDATA_VAR_TYPE_GRID: 
-				netdata_var_type_destructor[$ var_key] = ds_grid_destroy;
-				break;
-		}
-	}
-	
-	netdata_add_var("class_id", NETDATA_VAR_TYPE_U8, NET_DATA.UNKNOW);
-
-	/// The REAL destructor for the class
-	static __destructor__ = function(){
-		var _keys = variable_struct_get_names(netdata_var_type_destructor);
-		var _callback = undefined;
-		for(var i = 0; i < array_length(_keys); i++){
-			_callback = netdata_var_type_destructor[$ _keys[i]];
-			_callback(variable_struct_get(self, _keys[i]));
-		}
-	}
+	#region FUNCTIONS 
 	
 	/// Creates a buffer with this class info
+	/// @func create_network_buffer 
 	static create_network_buffer = function(){
 		var _buff = buffer_create(1, buffer_grow, 1);
-		var _keys = variable_struct_get_names(netdata_var_type);
 		var _callback = undefined;
 		
-		for(var i = 0; i < array_length(_keys); i++){
-			_callback = netdata_var_type_write[$ _keys[i]];
-			_callback(_buff, netdata_var_type[$ _keys[i]], variable_struct_get(self, _keys[i]));
+		for(var i = 0; i < array_length(netdata_var_type_order); i++){
+			_callback = netdata_var_type_write[$ netdata_var_type_order[i]];
+			_callback(_buff, netdata_var_type[$ netdata_var_type_order[i]], variable_struct_get(self, netdata_var_type_order[i]));
 		}
 		
 		return _buff;
 	}		
 	
 	/// Set the seeker and get the type
+	/// @func read_network_buffer
 	static read_network_buffer = function(buffer){
 		buffer_seek(buffer, buffer_seek_start, 0);
-		var _keys = variable_struct_get_names(netdata_var_type);
 		var _callback = undefined;
 		
-		for(var i = 0; i < array_length(_keys); i++){
-			_callback = netdata_var_type_read[$  _keys[i]];
-			_callback(buffer, self, _keys[i]);
+		for(var i = 0; i < array_length(netdata_var_type_order); i++){
+			_callback = netdata_var_type_read[$  netdata_var_type_order[i]];
+			_callback(buffer, self, netdata_var_type_order[i]);
 		}
 	}
 	
@@ -76,6 +51,44 @@ function netdata_abstract_class() constructor {
 		
 		if(destroy_buffer) buffer_delete(buffer);
 	}
+	
+	/// The REAL destructor for the class
+	static __destructor__ = function(){
+		var _keys = variable_struct_get_names(netdata_var_type_destructor);
+		var _callback = undefined;
+		for(var i = 0; i < array_length(_keys); i++){
+			_callback = netdata_var_type_destructor[$ _keys[i]];
+			_callback(variable_struct_get(self, _keys[i]));
+		}
+	}
+	
+	/// @func netdata_add_var
+	static netdata_add_var = function(var_str, type, value){
+		variable_struct_set(self, var_str, value);
+		variable_struct_set(netdata_var_type, var_str, __network_get_buffer_type(type));
+		variable_struct_set(netdata_var_type_read, var_str, __netdata_get_read_callback(type));
+		variable_struct_set(netdata_var_type_write, var_str, __netdata_get_write_callback(type));
+		netdata_set_type_destructor(type, var_str);
+		array_push(netdata_var_type_order, var_str);
+	}
+	
+	static netdata_set_type_destructor = function(var_type, var_key){
+		switch(var_type){
+			case NETDATA_VAR_TYPE_GRID: 
+				netdata_var_type_destructor[$ var_key] = ds_grid_destroy;
+				break;
+		}
+	}
+	
+	#endregion
+	
+	/// PLEASE OVERWRITE THIS
+	static on_client_receive = do_nothing;
+	static on_server_receive = do_nothing;
+	static __send_self = function(){ SatelliteBroadcast(class_id, self); }
+	
+	/// 
+	netdata_add_var("class_id", NETDATA_VAR_TYPE_U8, NET_DATA.UNKNOW);
 }
 
 function __network_get_buffer_type(var_type){
@@ -119,14 +132,18 @@ function __netdata_write_default(buffer, type, value){
 	buffer_write(buffer, type, value);
 }
 function __netdata_read_default(buffer, struct_class, var_key){
-	struct_class[$ var_key] = buffer_read(buffer, struct_class.netdata_var_type[$ var_key]);
+	var _value = buffer_read(buffer, struct_class.netdata_var_type[$ var_key]);
+	struct_class[$ var_key] = _value;
 }
 
 /// DS GRID VALUES
 function __netdata_write_grid(buffer, type, value){
-	buffer_write(buffer, buffer_text, ds_grid_write(value));
+	buffer_write(buffer, buffer_string, ds_grid_write(value));
 }
 function __netdata_read_grid(buffer, struct_class, var_key){
-	ds_grid_read( struct_class[$ var_key] , buffer_read(buffer, buffer_text) );
+	var _grid = struct_class[$ var_key];
+	var _str = buffer_read(buffer, buffer_string);
+	
+	ds_grid_read(_grid, _str);
 }
 

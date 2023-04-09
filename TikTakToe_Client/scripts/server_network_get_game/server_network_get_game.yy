@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_client_data_receive",
+  "name": "server_network_get_game",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Client",
-    "path": "folders/Scripts/Network/Client.yy",
+    "name": "Server",
+    "path": "folders/Scripts/Network/Server.yy",
   },
 }

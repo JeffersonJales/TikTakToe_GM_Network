@@ -14,17 +14,20 @@
 #macro NET_ASYNC_SIZE "size"
 #macro NET_ASYNC_MESSAGE_TYPE "message_type"
 
-
-function net_async_get(str){
-	return async_load[? str];
-}
-
-function net_async_exists(str){
-	return async_load[? str] != undefined;
-}
-
 function network_send_packet_simple(socket, buffer){
 	var _size = buffer_get_size(buffer);
 	print("Buffer packet _size", _size, " bytes");
 	return network_send_packet(socket, buffer, _size);
+}
+
+function network_send_packet_data(class_constructor, socket = global.client_server_socket){
+	var _class = new class_constructor();
+	_class.send_buffer(socket);
+	_class.__destructor__();
+}
+
+function network_send_packet_data_enum(net_data_enum, socket = global.client_server_socket){
+	var _class = network_data_get_class(net_data_enum)
+	_class.send_buffer(socket);
+	_class.__destructor__();
 }

@@ -1,3 +1,4 @@
+#macro NETWORK_DATA_TYPE_VAR_TYPE buffer_u8
 
 function network_data_get_type(buffer_data){
 	var _type = 0;

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "netdata_tictactoe_data",
+  "name": "netdata_game_found",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

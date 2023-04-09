@@ -1,2 +1,2 @@
 /// @desc Server communication
-client_socket_network();
+client_async_network_event();

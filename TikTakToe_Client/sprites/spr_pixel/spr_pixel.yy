@@ -2,6 +2,9 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "spr_pixel",
+  "ConfigValues": {
+    "Server": {"textureGroupId":"{\"name\":\"tx_menu_board\",\"path\":\"texturegroups/tx_menu_board\"}",},
+  },
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -21,8 +24,8 @@
   "width": 1,
   "height": 1,
   "textureGroupId": {
-    "name": "Default",
-    "path": "texturegroups/Default",
+    "name": "tx_menu_board",
+    "path": "texturegroups/tx_menu_board",
   },
   "swatchColours": null,
   "gridX": 0,

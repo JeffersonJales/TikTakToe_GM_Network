@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Server",
-    "path": "folders/Scripts/Network/Server.yy",
+    "name": "Async Handler",
+    "path": "folders/Scripts/Network/Server/Async Handler.yy",
   },
 }
