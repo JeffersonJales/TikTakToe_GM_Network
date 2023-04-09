@@ -31,7 +31,7 @@ on_button_board_click = function(button_id){
 		
 		_tic_state.send_buffer(global.client_server_socket);
 		_tic_state.__destructor__();
-		game_fsm.change("wait");
+		game_fsm.change("wait_player");
 	}
 }
 

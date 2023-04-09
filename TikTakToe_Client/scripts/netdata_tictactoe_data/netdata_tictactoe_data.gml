@@ -50,9 +50,10 @@ function netdata_tictactoe_data() : netdata_abstract_class() constructor{
 	static on_client_receive = __send_self;
 	
 	static on_server_receive = function(){
+		var _real_game = global.tictactoe_game[? ttt_game_id];
 		
-		player_turn = player_turn == 1 ? 0 : 1;
-		
-		
+		with(_real_game){
+			player_turn = player_turn == 1 ? 0 : 1;
+		}
 	}
 }
