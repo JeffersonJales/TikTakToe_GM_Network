@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "netdata_abstract_class",
+  "name": "netdata_tictactoe_data",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

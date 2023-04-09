@@ -1,11 +1,8 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_text",
-  "spriteId": {
-    "name": "spr_text_area",
-    "path": "sprites/spr_text_area/spr_text_area.yy",
-  },
+  "name": "obj_tictactoe_controller",
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,
@@ -25,15 +22,14 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":4,"eventType":7,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":12,"collisionObjectId":null,},
   ],
-  "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"string_text","varType":2,"value":"\"\"","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
-  ],
+  "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "General",
-    "path": "folders/Objects/Game/General.yy",
+    "name": "TicTacBoard",
+    "path": "folders/Objects/Game/TicTacBoard.yy",
   },
 }

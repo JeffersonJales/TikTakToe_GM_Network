@@ -5,8 +5,14 @@ image_speed = 0;
 enable = true;	
 set_enable = function(boolean){
 	enable = boolean;
+	on_change_enable();
+}
+
+on_change_enable = function(){
 	image_blend = enable ? c_white : c_dkgray;
 }
+
+
 
 /// BUTTON BEHAVIOR
 on_click_callback = do_nothing;
